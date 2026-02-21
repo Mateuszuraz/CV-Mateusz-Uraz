@@ -1,0 +1,226 @@
+<!doctype html>
+<html lang="pl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Mateusz Uraz — Digital Portfolio</title>
+  <style>
+    :root {
+      --lime: #C9FF3B;
+      --ink: #0A0F0B;
+      --white: #ffffff;
+      --shadow: 0 10px 30px rgba(0,0,0,0.1);
+      --card-bg: rgba(255, 255, 255, 0.9);
+    }
+
+    * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+    body {
+      margin: 0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      background: var(--lime);
+      color: var(--ink);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      padding: 15px;
+    }
+
+    .app-container {
+      width: min(480px, 100%);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .header { text-align: center; padding: 20px 0; }
+    .avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      border: 3px solid var(--ink);
+      background: white;
+      margin: 0 auto 15px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+    .avatar img { width: 100%; height: 100%; object-fit: cover; }
+    .name-title h1 { margin: 0; font-size: 28px; font-weight: 900; text-transform: uppercase; letter-spacing: -1px; }
+    .name-title p { margin: 5px 0; font-family: monospace; font-weight: 700; opacity: 0.7; font-size: 13px; }
+
+    /* MENU */
+    .menu-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin: 20px 0;
+    }
+    .menu-btn {
+      background: var(--ink);
+      color: var(--lime);
+      border: none;
+      padding: 15px 10px;
+      border-radius: 18px;
+      font-weight: 800;
+      font-size: 11px;
+      text-transform: uppercase;
+      cursor: pointer;
+      transition: 0.2s;
+    }
+    .menu-btn.active { background: white; color: var(--ink); outline: 2px solid var(--ink); box-shadow: var(--shadow); }
+
+    /* CONTENT */
+    .view {
+      display: none;
+      background: var(--card-bg);
+      backdrop-filter: blur(10px);
+      border-radius: 28px;
+      padding: 25px;
+      border: 1px solid rgba(255,255,255,0.4);
+      box-shadow: var(--shadow);
+      animation: fadeIn 0.3s ease;
+    }
+    .view.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+
+    h2 { font-size: 14px; text-transform: uppercase; margin: 20px 0 10px; border-bottom: 2px solid var(--ink); display: inline-block; }
+    h2:first-child { margin-top: 0; }
+    p { font-size: 14px; line-height: 1.6; margin-bottom: 12px; }
+    ul { padding-left: 18px; margin: 0; }
+    li { font-size: 13.5px; margin-bottom: 6px; }
+    
+    .tech-tag {
+      display: inline-block;
+      background: var(--ink);
+      color: var(--lime);
+      padding: 4px 10px;
+      border-radius: 8px;
+      font-size: 11px;
+      font-family: monospace;
+      margin: 0 4px 4px 0;
+      font-weight: bold;
+    }
+
+    .contact-bar {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+      margin-top: 20px;
+    }
+    .contact-link {
+      background: white;
+      padding: 10px;
+      border-radius: 12px;
+      text-decoration: none;
+      color: var(--ink);
+      font-weight: 700;
+      font-size: 12px;
+      text-align: center;
+      border: 1px solid rgba(0,0,0,0.1);
+    }
+
+    .footer { text-align: center; padding: 25px; font-family: monospace; font-size: 10px; opacity: 0.5; }
+  </style>
+</head>
+<body>
+
+<div class="app-container">
+  <header class="header">
+    <div class="avatar">
+      <img src="mateusz-uraz.jpg" alt="Mateusz Uraz">
+    </div>
+    <div class="name-title">
+      <h1>Mateusz Uraz</h1>
+      <p>Continuous Improvement Coordinator | Automation</p>
+    </div>
+  </header>
+
+  <nav class="menu-grid">
+    <button class="menu-btn active" onclick="showView('o-mnie', this)">O Mnie</button>
+    <button class="menu-btn" onclick="showView('procesy', this)">Procesy & CI</button>
+    <button class="menu-btn" onclick="showView('it', this)">IT & Automaty</button>
+    <button class="menu-btn" onclick="showView('kariera', this)">Doświadczenie</button>
+  </nav>
+
+  <div class="content-area">
+    <div id="o-mnie" class="view active">
+      <h2>Kim jestem?</h2>
+      <p>Moja droga zawodowa to ewolucja od praktyka hali produkcyjnej do stratega optymalizacji procesów. Wierzę, że <b>najlepsze systemy tworzą ludzie, którzy wiedzą, jak wygląda praca u podstaw.</b></p>
+      <p>Jako Koordynator CI, nie tylko mapuję procesy, ale buduję mosty między technologią a pracownikiem. Specjalizuję się w <b>digitalizacji wiedzy operacyjnej</b> – zamieniam skomplikowane instrukcje w czytelne, interaktywne narzędzia.</p>
+      <p>Prywatnie stawiam na ciągły rozwój (Continuous Improvement to dla mnie styl życia, nie tylko praca). Łączę humanistyczne spojrzenie na komunikację z technicznym zacięciem do automatyzacji.</p>
+      <div class="contact-bar">
+        <a href="tel:+48733819608" class="contact-link">ZADZWOŃ</a>
+        <a href="mailto:mateusz.uraz@gmail.com" class="contact-link">E-MAIL</a>
+      </div>
+    </div>
+
+    <div id="procesy" class="view">
+      <h2>Lean & CI</h2>
+      <p>Skupiam się na eliminacji marnotrawstwa poprzez standaryzację i transparentność danych.</p>
+      <ul>
+        <li><b>Systemy OEE:</b> Projektowanie narzędzi do analizy strat i efektywności operacyjnej.</li>
+        <li><b>Dokumentacja 2.0:</b> Tworzenie SOP, instrukcji wideo i checklist wdrożeniowych (HACCP/Food Hygiene).</li>
+        <li><b>Matryce Umiejętności:</b> Zarządzanie poliwalencją i rozwojem kompetencji technicznych zespołów.</li>
+        <li><b>Audyty & 5S:</b> Wdrażanie i utrzymywanie standardów organizacji miejsc pracy.</li>
+      </ul>
+    </div>
+
+    <div id="it" class="view">
+      <h2>Automatyzacja & Dev</h2>
+      <p>Wykorzystuję technologię, aby "praca robiła się sama".</p>
+      
+      <h2>Stack Techniczny</h2>
+      <div style="margin-bottom: 15px;">
+        <span class="tech-tag">Google Apps Script</span>
+        <span class="tech-tag">JavaScript</span>
+        <span class="tech-tag">HTML5 / CSS3</span>
+        <span class="tech-tag">JSON</span>
+        <span class="tech-tag">Excel / G-Sheets</span>
+        <span class="tech-tag">Google Workspace Enterprise</span>
+        <span class="tech-tag">AI / LLM Prompting</span>
+      </div>
+
+      <h2>Realizacje</h2>
+      <ul>
+        <li>Automatyzacja obiegu dokumentacji w Google Workspace.</li>
+        <li>Integracja formularzy Google z systemami raportowania wyników.</li>
+        <li>Wykorzystanie AI do błyskawicznej adaptacji treści technicznych PL/EN.</li>
+      </ul>
+    </div>
+
+    <div id="kariera" class="view">
+      <h2>Ścieżka Zawodowa</h2>
+      <p><b>Koordynator CI // Dan Cake Polonia</b> (2025 - Obecnie)<br>
+      <small>Standardy pracy, digitalizacja raportowania, wsparcie Lean.</small></p>
+      
+      <p><b>Operator Maszyn // Branża Spożywcza</b><br>
+      <small>Głębokie zrozumienie procesów produkcyjnych i realiów operacyjnych.</small></p>
+      
+      <p><b>Team Leader // Gallagher’s Bakery (Irlandia)</b><br>
+      <small>Zarządzanie 15-osobowym zespołem, planowanie zmian, nadzór nad wypiekiem.</small></p>
+
+      <h2>Kursy & Edukacja</h2>
+      <ul>
+        <li>Google Workspace Enterprise (Buena Cloud)</li>
+        <li>Zastosowanie AI w produkcji</li>
+        <li>Licencjat AWF Kraków</li>
+        <li>HACCP / Food Hygiene / Manual Handling</li>
+      </ul>
+    </div>
+  </div>
+
+  <footer class="footer">
+    MATEUSZ URAZ // PROCESY // AUTOMATYZACJA<br>
+    © 2026 // SYSTEM STATUS: OPTIMAL
+  </footer>
+</div>
+
+<script>
+  function showView(viewId, btn) {
+    document.querySelectorAll('.view').forEach(v => v.classList.remove('active'));
+    document.querySelectorAll('.menu-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById(viewId).classList.add('active');
+    btn.classList.add('active');
+  }
+</script>
+
+</body>
+</html>
